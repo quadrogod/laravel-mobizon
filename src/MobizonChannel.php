@@ -18,7 +18,6 @@ class MobizonChannel
     public function __construct()
     {
         $this->config = config('services')['mobizon'];
-        dump($this->config);
         $this->mobizonApi = new MobizonApi(
             $this->config['secret'],
             $this->config['domain']
