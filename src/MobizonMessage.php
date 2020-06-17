@@ -1,6 +1,6 @@
 <?php
 
-namespace Laraketai\Mobizon;
+namespace Alitvinov\LaravelMobizon;
 
 class MobizonMessage
 {
@@ -10,18 +10,21 @@ class MobizonMessage
      * @var string
      */
     public $alphaname = '';
+    
     /**
      * The message content.
      *
      * @var string
      */
     public $content = '';
+
     /**
      * Time of sending a message.
      *
      * @var \DateTimeInterface
      */
     public $sendAt;
+
     /**
      * Create a new message instance.
      *
@@ -33,6 +36,7 @@ class MobizonMessage
     {
         return new static($content);
     }
+
     /**
      * @param  string  $content
      */
@@ -40,6 +44,7 @@ class MobizonMessage
     {
         $this->content = $content;
     }
+
     /**
      * Set the message content.
      *
@@ -52,6 +57,7 @@ class MobizonMessage
         $this->content = $content;
         return $this;
     }
+
     /**
      *
      * @param  string  $alphaname

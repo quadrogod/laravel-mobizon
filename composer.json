@@ -1,5 +1,5 @@
 {
-    "name": "laraketai/mobizon",
+    "name": "alitvinov/laravel-mobizon",
     "description": "Mobizon SMS notifications driver for Laravel",
     "keywords": [
         "laravel",
@@ -8,13 +8,12 @@
         "sms",
         "php"
     ],
-    "homepage": "https://github.com/laraketai/mobizon",
+    "homepage": "https://github.com/Alitvinov/mobizon",
     "license": "MIT",
     "authors": [
         {
-            "name": "Aketai",
-            "email": "sanzhar@aketai.com",
-            "homepage": "https://github.com/laraketai",
+            "name": "Alex Litvinov",
+            "homepage": "https://github.com/Alitvinov",
             "role": "Developer"
         }
     ],
@@ -26,7 +25,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/queue": "5.1 - 5.8|^6.0|^7.0",
         "illuminate/notifications": "5.1 - 5.8|^6.0|^7.0",
-        "illuminate/support": "5.1 - 5.8|^6.0|^7.0"
+        "illuminate/support": "5.1 - 5.8|^6.0|^7.0",
+        "mobizon/mobizon-php": "~2.0"
         
     },
     "require-dev": {
@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Laraketai\\Mobizon\\": "src"
+            "Alitvinov\\LaravelMobizon\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Laraketai\\Mobizon\\Test\\": "tests"
+            "Alitvinov\\LaravelMobizon\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -48,12 +48,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Laraketai\\Mobizon\\MobizonServiceProvider"
-            ]
-        }
     }
 }

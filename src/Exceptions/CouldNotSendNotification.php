@@ -1,6 +1,6 @@
 <?php
 
-namespace Laraketai\Mobizon\Exceptions;
+namespace Alitvinov\LaravelMobizon\Exceptions;
 
 use Exception;
 

@@ -1,68 +1,79 @@
 <?php
 
-namespace Laraketai\Mobizon;
+namespace Alitvinov\LaravelMobizon;
 
+use Mobizon\MobizonApi;
 use Illuminate\Notifications\Notification;
-use Laraketai\Mobizon\Exceptions\CouldNotSendNotification;
+use Alitvinov\LaravelMobizon\Exceptions\CouldNotSendNotification;
 
 class MobizonChannel
 {
     /**
      * @var MobizonApi $mobizonApi
      */
+
     protected $mobizonApi;
     protected $config;
-    /**
-     * MobizonChanel constructor.
-     *
-     * @param MobizonApi $mobizonApi
-     */
-    public function __construct(MobizonApi $mobizonApi)
+
+    public function __construct()
     {
-        $this->mobizonApi = $mobizonApi;
-        $this->config = config('mobizon');
+        $this->config = config('services')['mobizon'];
+        dump($this->config);
+        $this->mobizonApi = new MobizonApi(
+            $this->config['secret'],
+            $this->config['domain']
+        );
     }
+
     /**
      * Send the given notification.
      *
      * @param $notifiable
      * @param Notification $notification
      * @throws CouldNotSendNotification
-     * @throws \Laraketai\Mobizon\Mobizon_Http_Error
-     * @throws \Laraketai\Mobizon\Mobizon_Param_Required
      */
     public function send($notifiable, Notification $notification)
     {
-        $to = $notifiable->routeNotificationFor('mobizon');
-        if (empty($to)) {
+        $recipient = $notifiable->routeNotificationFor('mobizon');
+        if (empty($recipient)) {
             throw CouldNotSendNotification::missingRecipient();
         }
+
         $message = $notification->toMobizon($notifiable);
         if (is_string($message)) {
             $message = new MobizonMessage($message);
         }
         $message->alphaname($this->config['alphaname']);
-        $this->sendMessage($to, $message);
+        
+        $this->sendSMSMessage($recipient, $message);
     }
+
     /**
      * @param $recipient
      * @param MobizonMessage $message
      * @throws CouldNotSendNotification
-     * @throws \Laraketai\Mobizon\Mobizon_Http_Error
-     * @throws \Laraketai\Mobizon\Mobizon_Param_Required
+     * @throws \Alitvinov\LaravelMobizon\Mobizon_Http_Error
+     * @throws \Alitvinov\LaravelMobizon\Mobizon_Param_Required
      */
-    protected function sendMessage($recipient, MobizonMessage $message)
+
+    protected function sendSMSMessage($recipient, MobizonMessage $message)
     {
         if (mb_strlen($message->content) > 800) {
             throw CouldNotSendNotification::contentLengthLimitExceeded();
         }
+
         $params = [
             'recipient' => $recipient,
             'text' => $message->content,
-            //'from' => $message->alphaname, //Optional
+            'from' => $message->alphaname,
         ];
+
         if(!$this->mobizonApi->call('message', 'sendSMSMessage', $params)){
-            throw CouldNotSendNotification::mobizonRespondedWithAnError($this->mobizonApi->getCode(),$this->mobizonApi->getMessage(),$this->mobizonApi->getData());
+            throw CouldNotSendNotification::mobizonRespondedWithAnError(
+                $this->mobizonApi->getCode(),
+                $this->mobizonApi->getMessage(),
+                $this->mobizonApi->getData()
+            );
         }
     }
 }
