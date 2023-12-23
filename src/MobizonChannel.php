@@ -25,7 +25,6 @@ class MobizonChannel
         if (is_string($message)) {
             $message = new MobizonMessage($message);
         }
-        $message->alphaname($this->config['alphaname']);
 
         $mobizon = new Mobizon();
         $mobizon->send($recipient, $message);

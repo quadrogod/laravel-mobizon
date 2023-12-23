@@ -39,11 +39,11 @@ class Mobizon
             throw CouldNotSendNotification::contentLengthLimitExceeded();
         }
 
-        $params = [
+        $params = array_filter([
             'recipient' => $phone,
             'text' => $message->content,
             'from' => $message->alphaname,
-        ];
+        ]);
 
         if(!$this->mobizonApi->call('message', 'sendSMSMessage', $params)){
             throw CouldNotSendNotification::mobizonRespondedWithAnError(
