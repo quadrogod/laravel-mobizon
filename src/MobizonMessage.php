@@ -1,6 +1,6 @@
 <?php
 
-namespace Alitvinov\LaravelMobizon;
+namespace Quadrogod\LaravelMobizon;
 
 class MobizonMessage
 {
@@ -10,7 +10,7 @@ class MobizonMessage
      * @var string
      */
     public $alphaname = '';
-    
+
     /**
      * The message content.
      *

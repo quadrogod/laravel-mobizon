@@ -1,9 +1,9 @@
 <?php
 
-namespace Alitvinov\LaravelMobizon;
+namespace Quadrogod\LaravelMobizon;
 
 use Mobizon\MobizonApi;
-use Alitvinov\LaravelMobizon\Exceptions\CouldNotSendNotification;
+use Quadrogod\LaravelMobizon\Exceptions\CouldNotSendNotification;
 
 class Mobizon
 {

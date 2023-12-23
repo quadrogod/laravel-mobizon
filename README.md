@@ -4,7 +4,7 @@
 
 Install via composer:
 ```
-composer require Alitvinov/LaravelMobizon
+composer require quadrogod/laravel-mobizon
 ```
 
 ### Setting up your Mobizon service
@@ -27,8 +27,8 @@ The package provides a new channel that can be used in your notification class l
 
 ```php
 use Illuminate\Notifications\Notification;
-use Alitvinov\LaravelMobizon\MobizonChannel;
-use Alitvinov\LaravelMobizon\MobizonMessage;
+use Quadrogod\LaravelMobizon\MobizonChannel;
+use Quadrogod\LaravelMobizon\MobizonMessage;
 
 public function via($notifiable)
 {
@@ -53,7 +53,7 @@ public function routeNotificationForMobizon()
 
 ## Credits
 
-Thanks to [laraketai](https://github.com/laraketai) for the original package.
+Thanks to [laraketai](https://github.com/laraketai) and [Alitvinov](https://github.com/Alitvinov) for the original package.
 
 ## License
 

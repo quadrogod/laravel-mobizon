@@ -1,9 +1,9 @@
 <?php
 
-namespace Alitvinov\LaravelMobizon;
+namespace Quadrogod\LaravelMobizon;
 
 use Illuminate\Notifications\Notification;
-use Alitvinov\LaravelMobizon\Exceptions\CouldNotSendNotification;
+use Quadrogod\LaravelMobizon\Exceptions\CouldNotSendNotification;
 
 class MobizonChannel
 {
@@ -26,7 +26,7 @@ class MobizonChannel
             $message = new MobizonMessage($message);
         }
         $message->alphaname($this->config['alphaname']);
-        
+
         $mobizon = new Mobizon();
         $mobizon->send($recipient, $message);
     }

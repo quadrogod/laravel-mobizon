@@ -1,5 +1,5 @@
 {
-    "name": "alitvinov/laravel-mobizon",
+    "name": "quadrogod/laravel-mobizon",
     "description": "Mobizon SMS notifications driver for Laravel",
     "keywords": [
         "laravel",
@@ -8,39 +8,36 @@
         "sms",
         "php"
     ],
-    "homepage": "https://github.com/Alitvinov/mobizon",
+    "homepage": "https://github.com/quadrogod/laravel-mobizon",
     "license": "MIT",
     "authors": [
         {
-            "name": "Alex Litvinov",
-            "homepage": "https://github.com/Alitvinov",
+            "name": "Alex Molchanov",
+            "homepage": "https://github.com/quadrogod",
             "role": "Developer"
         }
     ],
     "require": {
         "lib-curl": "*",
-        "php": "^7.2.5",
+        "php": "^7.2.5 || ^8.0",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^6.3",
-        "illuminate/queue": "5.1 - 5.8|^6.0|^7.0",
-        "illuminate/notifications": "5.1 - 5.8|^6.0|^7.0",
-        "illuminate/support": "5.1 - 5.8|^6.0|^7.0",
+        "guzzlehttp/guzzle": "^7.2",
         "mobizon/mobizon-php": "~2.0"
-        
+
     },
     "require-dev": {
-        "mockery/mockery": "^0.9.5",
-        "phpunit/phpunit": "4.*"
+        "mockery/mockery": "^1.4.4",
+        "phpunit/phpunit": "^10.1"
     },
     "autoload": {
         "psr-4": {
-            "Alitvinov\\LaravelMobizon\\": "src"
+            "Quadrogod\\LaravelMobizon\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Alitvinov\\LaravelMobizon\\Test\\": "tests"
+            "Quadrogod\\LaravelMobizon\\Test\\": "tests"
         }
     },
     "scripts": {
